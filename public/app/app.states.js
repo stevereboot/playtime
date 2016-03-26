@@ -6,7 +6,7 @@ appStates.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider) {
 		$stateProvider.
 			state('main', {
-				url: '',
+				url: '/',
 				templateUrl: 'app/main/main.html',
 				controller: 'main'
 			}).
@@ -29,6 +29,6 @@ appStates.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			state.go('error');
 		});
 
-		// $locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(true);
 	}
 ]);

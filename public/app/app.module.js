@@ -15,7 +15,8 @@ var componentApps = [
 	'error.controller',
 	'nav.controller',
 	'main.controller',
-	'main.service'
+	'main.service',
+        'register.controller'
 ]
 
 // Define App Module

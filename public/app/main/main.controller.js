@@ -3,17 +3,22 @@
 var main = angular.module('main.controller', []);
 
 main.controller('main', 
-	[
-		'$scope',
-		'toolsService',
-	function(
-		$scope,
-		toolsService
-	) {
+    [
+        '$scope',
+        'toolsService',
+        'authService',
+    function(
+        $scope,
+        toolsService,
+        authService
+    ) {
+        $scope.main = {};
 
-		$scope.main = {};
+        authService.user(function(resp) {
+                $scope.main.login = resp;
+                console.log($scope.main.login)
+        });
 
 
-
-	}
+    }
 ]);

@@ -16,14 +16,21 @@ register.controller('register',
 	) {
 		$scope.register = {}
 
-		if ($scope.register.create) {
-			authService.user($scope.register.create, function(resp) {
-				if (resp) {
-					console.log(resp + ' has been registered');
-					$state.reload();
-				}
-			});
+		$scope.register.create = function() {
+			if ($scope.register.createForm) {
+					authService.create($scope.register.createForm, function(resp) {
+							if (resp) {
+                                                            if (resp.error) {
+                                                                console.log(resp.error.message)
+                                                            }
+                                                            console.log(resp + ' has been registered');
+                                                            $state.reload();
+							}
+					});
+			}
 		}
+
+
 
 	}
 ]);
