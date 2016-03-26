@@ -24,7 +24,6 @@ nav.controller('nav',
 
 		authService.user(function(resp) {
 			$scope.nav.login = resp;
-			console.log($scope.nav.login)
 		});
 
 		$scope.nav.logout = function(resp) {

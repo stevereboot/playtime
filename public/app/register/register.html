@@ -1,5 +1,39 @@
 <div class="container" ng-controller="register">
-  <div class="row">
+
+  <div class="row" ng-if="!register.registerFlag">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Sign in</h3>
+          </div> <!-- /.panel-heading -->
+          <div class="panel-body">
+            <form>
+              <div class="form-group">
+
+                <label for="loginUsername">Username</label>
+                <input type="text" class="form-control" id="loginUsername" placeholder="Enter username" required autofocus ng-model="register.loginForm.username">
+              </div> <!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required autofocus ng-model="register.loginForm.password">
+              </div> <!-- /.form-group -->
+
+              <button type="submit" class="btn btn-md btn-primary btn-block" ng-click="register.login()">Sign in</button>
+
+              <div style="width: 100%; height: 10px; border-bottom: 1px solid #eee; text-align: center; margin: 20px 0;">
+                <span style="color: #777; background-color: #fff; padding: 0 10px;">or</span>
+              </div>
+
+              <button type="button" class="btn btn-md btn-default btn-block" ng-click="register.toggleRegister()">Create New Account</button>
+
+            </form>
+          </div> <!-- /.panel-body -->
+        </div> <!-- /.panel -->
+      </div> <!-- /.col -->
+  </div> <!-- /.row -->
+
+  <div class="row" ng-if="register.registerFlag">
       <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -15,18 +49,26 @@
 
               <div class="form-group">
                 <label for="registerPassword">Password</label>
-                <input type="password" class="form-control" id="registerPassword" placeholder="Enter password" required autofocus ng-model="register.createForm.password">
+                <input type="password" class="form-control" id="registerPassword" placeholder="at least 1 character" required autofocus ng-model="register.createForm.password">
               </div> <!-- /.form-group -->
 
               <div class="form-group">
-                <label for="registerPasswordConfirm">Password</label>
+                <label for="registerPasswordConfirm">Confirm Password</label>
                 <input type="password" class="form-control" id="registerPasswordConfirm" placeholder="Confirm password" required autofocus ng-model="register.createForm.passwordConfirm">
               </div> <!-- /.form-group -->
 
               <button type="submit" class="btn btn-md btn-primary btn-block" ng-click="register.create()">Create Account</button>
+
+              <div style="width: 100%; height: 10px; border-bottom: 1px solid #eee; text-align: center; margin: 20px 0;">
+                <span style="color: #777; background-color: #fff; padding: 0 10px;">or</span>
+              </div>
+
+              <button type="button" class="btn btn-md btn-default btn-block" ng-click="register.toggleRegister()">Sign in</button>
+
             </form>
           </div> <!-- /.panel-body -->
         </div> <!-- /.panel -->
       </div> <!-- /.col -->
   </div> <!-- /.row -->
+
 </div> <!-- /.container -->

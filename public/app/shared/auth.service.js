@@ -14,11 +14,17 @@ auth.service('authService',
 			});
 		}
 
+		this.login = function(info, callback) {
+			$http.post('/api/auth/login', info).then(function(data) {
+				callback(data.data);
+			});
+		}		
+
 		this.create = function(info, callback) {
 			$http.post('/api/auth/create', info).then(function(data) {
 				callback(data.data);
 			});
-		}		
+		}
 
 		this.logout = function(callback) {
 			$http.get('/api/auth/logout').then(function(data) {

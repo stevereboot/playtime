@@ -16,7 +16,6 @@ main.controller('main',
 
         authService.user(function(resp) {
                 $scope.main.login = resp;
-                console.log($scope.main.login)
         });
 
 
