@@ -1,0 +1,93 @@
+<div ng-include src="'app/nav/nav.html'"></div>
+<div class="container">
+	<div class="row">
+		<h2>Run Liquidation Report</h2>
+		<hr>
+
+		<div class="col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix">
+					<h3 class="panel-title pull-left" style="padding-top: 8px;">List</h3>
+
+					<form class="form-inline pull-right">
+						<div class="input-group">
+							<textarea 
+								style="resize:none; width:120px;" 
+								class="form-control importExcel" 
+								rows="1" 
+								ng-model="custom.pasted" 
+								placeholder="Paste XL">
+							</textarea>
+							<span 
+								class="input-group-btn" 
+								ng-click="custom.paste()">
+								<button 
+									class="btn btn-default" 
+									type="button" 
+									title="Upload"><i class="fa fa-upload fa-lg"></i>
+								</button>
+							</span>
+						</div>
+					</form>
+				</div> <!-- ./panel-heading -->
+				<div 
+					drop-zone="[text/csv, application/vnd.ms-excel]"
+					file="custom.dropzone.file" 
+					file-name="custom.dropzone.fileName" 
+					file-size="custom.dropzone.fileSize" 
+					file-csv="custom.dropzone.fileCsv" 
+					file-list="custom.dropzone.fileList" 
+					file-json="custom.dropzone.fileJson">
+
+					<div class="panel-body" style="min-height: 400px; max-height: 400px; overflow-y: scroll;">
+						<table class="table table-hover">
+							<tr ng-repeat="i in custom.data">
+								<td ng-click="">{{i[0]}}</td>
+								<td class=""><i class="fa fa-trash" ng-click="custom.delete($index)"></i></td>
+							</tr>
+						</table>
+					</div> <!-- ./panel-body -->
+				</div> <!-- ./dropzone -->
+			</div> <!-- ./panel -->
+		</div> <!-- /.col-md-3 -->
+
+		<div class="col-md-9">
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix">
+					<h3 class="panel-title pull-left" style="padding-top: 8px;">Results <i class="fa fa-refresh fa-spin" ng-show="custom.refreshing"></i></h3>
+
+					<form class="form-inline pull-right">
+						<div class="input-group">
+							<span class="input-group-addon" ng-click="custom.export()" title="Export to CSV"><i class="fa fa-download fa-lg"></i></span>
+							<textarea style="resize:none;" class="form-control exportCsv" rows="1" ng-model="custom.csv" placeholder="Get CSV" ng-disabled="!custom.liqLoans"></textarea>
+						</div>
+						<div class="input-group">
+							<a class="btn btn-default" href="" ng-click="custom.run()" ng-disabled="!custom.data">Get Report</a>
+						</div> <!-- ./input-group -->
+					</form>
+
+				</div> <!-- ./panel-heading -->
+				<div class="panel-body" style="min-height: 400px; max-height: 400px; overflow-y: scroll;">
+						<table class="table">
+							<thead>
+								<tr>
+									<th ng-repeat="i in custom.liqLoans.fields">{{i.label}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="i in custom.liqLoans.loans | limitTo:10">
+									<td ng-repeat="j in i track by $index">{{j | picker: custom.liqLoans.fields[$index].format}}</td>
+								</tr>
+							</tbody>
+						</table>
+				</div> <!-- ./panel-body -->
+			</div> <!-- ./panel -->
+
+
+
+
+		</div> <!-- /.col-md-9 -->
+
+	</div> <!-- /.row -->
+
+</div> <!-- /.container -->

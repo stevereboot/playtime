@@ -1,0 +1,156 @@
+/* docs.css */
+
+/* ---------->>> Side Menu TOC <<<-----------*/
+
+/* Hide for mobile */
+.menu {
+    display: none;
+}
+
+/* Show for tablet or larger */
+@media (min-width: 992px) {
+    .menu {
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px 20px 20px 45px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        border-right: 1px solid #dfe2e7;
+        width: 250px;
+    }
+}
+
+/* Even wider menu for full size */
+@media (min-width: 1200px) {
+    .menu {
+        width: 300px;
+    }
+}
+.menu ul, .menu li {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.menu a {
+    color: #606060;
+    display: block;
+    padding: 1px 0;
+    // font-size: 16px;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #000;
+}
+
+.menu a.level-1,
+.menu a.level-2,
+.menu a.level-3 {
+    margin: 5px 0;
+}
+
+.menu a.level-1 {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.menu a.level-2 {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.menu a.level-3 {
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+/* ---------->>> Content <<<-----------*/
+.content {
+    font-size: 16px;
+    color: #606060;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5 {
+    margin-top: -50px;
+}
+
+.content h1,
+.content h2 {
+    border-bottom: solid 1px rgba(0, 0, 0, 0.07);
+    padding-top: 100px;
+    padding-bottom: 10px;
+}
+
+.content h3,
+.content h4,
+.content h5 {
+    border-bottom: solid 1px rgba(0, 0, 0, 0.07);
+    color: #505050;
+    padding-top: 80px;
+    padding-bottom: 10px;
+}
+
+.content .alert {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.content table {
+    font-size: 13px;
+}
+
+/* Override HighlightJS theme background color */
+// .hljs {
+// 	background-color: #272822;
+// 	font-size: 14px;
+// }
+
+/* Custom code block styling */
+// .content code {
+// 	color: #e3c720;
+// 	box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+// 	background-color: #333;
+// }
+
+/* Fixed header spacing for anchor links */
+[id^=doclink] {
+    padding-top: 80px;
+    margin-top: -50px;
+}
+
+/* Header link label */
+a.headerlink .label-info {
+    font-size: 50%;
+    color: #e3c720;
+    background-color: #333;
+    border-color: #101010;
+}
+
+a.headerlink:hover,
+a.headerlink:focus {
+    text-decoration: none !important;
+}
+
+a.headerlink:hover .label-info {
+    color: #333;
+    background-color: #e3c720;
+}
+
+/* Custom alert-info styling */
+.alert-info {
+    color: #e3c720;
+    background-color: #333;
+    border-color: #101010;
+}
