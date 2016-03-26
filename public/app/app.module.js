@@ -6,7 +6,8 @@ var thirdPartyApps = [
 
 var sharedApps = [
 	'dropzoneDirective',
-	'toolsService'
+	'toolsService',
+	'authService'
 ]
 
 var componentApps = [
