@@ -1,22 +1,23 @@
 // public/app/app.module.js
 
 var thirdPartyApps = [
-	'ui.router'
+    'ui.router',
+    'angular-svg-round-progressbar'
 ]
 
 var sharedApps = [
-	'dropzoneDirective',
-	'toolsService',
-	'authService'
+    'dropzoneDirective',
+    'toolsService',
+    'authService'
 ]
 
 var componentApps = [
-	'appStates',
-	'error.controller',
-	'nav.controller',
-	'main.controller',
-	'main.service',
-        'register.controller'
+    'appStates',
+    'error.controller',
+    'nav.controller',
+    'main.controller',
+    'main.service',
+    'register.controller'
 ]
 
 // Define App Module
