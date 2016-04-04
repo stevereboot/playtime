@@ -17,6 +17,8 @@ var componentApps = [
     'nav.controller',
     'main.controller',
     'main.service',
+    'add.controller',
+    'add.service',
     'register.controller'
 ]
 
@@ -25,4 +27,5 @@ var app = angular.module('appModule', [].concat(thirdPartyApps, sharedApps, comp
 
 // Run on app startup
 // app.run([function() {
+
 // }]);

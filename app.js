@@ -27,7 +27,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // Socket
-var io = require('socket.io');
+app.io = require('socket.io');
 
 // app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 app.use(logger('dev'));

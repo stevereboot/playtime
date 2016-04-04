@@ -6,7 +6,10 @@ var passportLocalMongoose = require('passport-local-mongoose');
 // Define Schema
 var schema = new mongoose.Schema({
 	username: String,
-	password: String
+	password: String,
+	type: String,
+	parent: String,
+	time_rem: Number
 });
 
 schema.plugin(passportLocalMongoose);

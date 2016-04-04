@@ -8,6 +8,7 @@
         "ui-router": "latest",
         "angular-sanitize": "latest",
         "fontawesome": "latest",
-        "angular-svg-round-progressbar": "latest"
+        "angular-svg-round-progressbar": "latest",
+        "socket.io-client": "latest"
     }
 }

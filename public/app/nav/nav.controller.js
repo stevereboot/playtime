@@ -23,7 +23,7 @@ nav.controller('nav',
 		};
 
 		authService.user(function(resp) {
-			$scope.nav.login = resp;
+			$scope.nav.login = resp.username;
 		});
 
 		$scope.nav.logout = function(resp) {

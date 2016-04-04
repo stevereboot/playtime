@@ -10,6 +10,11 @@ appStates.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				templateUrl: 'app/main/main.html',
 				controller: 'main'
 			}).
+			state('add', {
+				url: '/add',
+				templateUrl: 'app/add/add.html',
+				controller: 'add'
+			}).			
 			state('error', {
 				params: {
 					code: 404,

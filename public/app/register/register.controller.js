@@ -53,6 +53,9 @@ register.controller('register',
                 return;
             }
 
+            $scope.register.createForm.type = 'parent';
+            $scope.register.createForm.loginAfter = true;
+
             authService.create($scope.register.createForm, function(resp) {
                 if (resp) {
                     if (resp.error) {

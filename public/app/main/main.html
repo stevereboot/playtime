@@ -1,16 +1,24 @@
 <div ng-include src="'app/nav/nav.html'"></div>
 <div ng-if="main.login==false" ng-include src="'app/register/register.html'"></div>
 <div ng-if="main.login!=false">
-    <div class="container" ng-controller="register">
-        <div class="row">
-            <div class="col-md-4">
+    <div class="container">
+
+        <div 
+            class="row" 
+            ng-repeat="children in main.children track by $index" 
+            ng-if="$index % 3 == 0">
+            <div 
+                class="col-md-4" 
+                ng-repeat="i in [$index, $index + 1, $index + 2]" 
+                ng-if="main.children[i] != null">
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Supermad</h3>
+                        <h3 class="panel-title">{{main.children[i].username}}</h3>
                     </div> <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div style="position: relative; text-align: center; margin-top: 20px">
-                            <div style="position: absolute; color: #bbb; top: 50%; bottom: auto; left: 50%; transform: translateY(-50%) translateX(-50%); font-size: 15px;">90/120</div>
+                            <div style="position: absolute; color: #bbb; top: 50%; bottom: auto; left: 50%; transform: translateY(-50%) translateX(-50%); font-size: 15px;">{{main.children[i].time_rem}}</div>
                             <div
                                 round-progress
                                 max="120"
@@ -34,13 +42,12 @@
                         </div>
 
                         <div class="input-group">
-                            <select class="form-control" style="width:35%">
-                                <option>Add 15</option>
-                                <option>Add 30</option>
+                            <select class="form-control" style="width:35%" ng-model="main.timeform.delta.selected">
+                                <option ng-repeat="option in main.timeform.delta.choices" value={{main.timeform.delta.data[$index]}}>{{option}}</option>
                             </select>
-                            <input type="text" class="form-control" aria-label="..." placeholder="Enter message" style="width:65%;">
+                            <input type="text" class="form-control" aria-label="..." placeholder="Enter message" style="width:65%;" ng-model="main.timeform.message">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
+                                <button class="btn btn-default" type="button" ng-click="main.timeform.update()">Go!</button>
                             </span>
                         </div><!-- /input-group --> 
 
@@ -69,8 +76,7 @@
                     </div> <!-- /.panel-body -->
                 </div> <!-- /.panel -->
             </div> <!-- /.col -->
-            <div class="col-md-4">
-            </div> <!-- /.col -->
-        </div> <!-- /.row -->
+        </div> <!-- /.row --> 
+
     </div> <!-- /.container -->
 </div>
