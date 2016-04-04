@@ -1,3 +1,6 @@
 {
-  "directory": "public/libs/"
+  "directory": "public/libs/",
+  "registry": "http://bower.herokuapp.com",
+  "proxy":"http://proxy.bloomberg.com:81",
+  "https-proxy":"http://proxy.bloomberg.com:81"  
 }

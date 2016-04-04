@@ -30,12 +30,11 @@ register.controller('register',
 
             authService.login($scope.register.loginForm, function(resp) {
                 if (resp) {
-                    if (resp.error) {
-                        console.log(resp.error.message);
-                    } else {
-                        console.log(resp + ' has been logged in');
-                        $state.reload();
-                    }
+                    console.log(resp + ' has been logged in');
+                    $state.reload();
+                } else {
+                    console.log('Invalid username or password');
+                    $scope.register.message = 'Invalid username or password';
                 }
             });    
         }

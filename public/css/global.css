@@ -25,6 +25,6 @@ body {
     color: #e3c720 !important;
 }
 
-.navbar-nav li a {
+.navbar-nav>li>a {
     font-size: 16px;
 }

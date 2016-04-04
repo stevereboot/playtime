@@ -15,6 +15,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var localStrategy = require('passport-local');
+var flash = require('connect-flash');
 
 // DB
 var mongoose = require('mongoose');
@@ -43,6 +44,7 @@ app.use(session({
 	 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Routes (after static)
 app.use('/api', require('./routes/api/index'));
