@@ -31,6 +31,16 @@ main.controller('main',
 
         });
 
+        // Time update form
+        $scope.main.timeform = {};
+        $scope.main.timeform.message = [];
+
+        $scope.main.timeform.delta = {
+            selected: [],
+            choices: ['Add 15', 'Add 30', 'Sub 15', 'Sub 30'],
+            data: [15, 30, -15, -30]
+        }
+
         // Get list of children
         function getChildren() {
             mainService.getChildren({
@@ -39,39 +49,27 @@ main.controller('main',
                 console.log(resp);
                 $scope.main.children = resp;
 
+                // Populate selected
+                for (i in resp) {
+                    $scope.main.timeform.delta.selected.push('15');
+                    $scope.main.timeform.message.push('');
+                }
+
             });
         }
 
-
-
-
-
-
-        // Time update form
-        $scope.main.timeform = {};
-
-        $scope.main.timeform.delta = {
-            selected: '15',
-            choices: ['Add 15', 'Add 30', 'Sub 15', 'Sub 30'],
-            data: [15, 30, -15, -30]
-        }
-
-
-        $scope.main.timeform.update = function() {
-            // Update server
+        // Update time
+        $scope.main.timeform.update = function(child, index) {
             mainService.addEvent({
-                parent_id: $scope.main.login,
-                child_id: 'foo',
-                change: $scope.main.timeform.delta.selected,
-                message: $scope.main.timeform.message
+                parent: $scope.main.login,
+                child: child,
+                change: $scope.main.timeform.delta.selected[index],
+                message: $scope.main.timeform.message[index]
             }).then(function(resp) {
                 console.log(resp);
 
 
             });
-            console.log($scope.main.id)
-            console.log($scope.main.timeform.delta.selected)
-            console.log($scope.main.timeform.message)
         } 
 
 

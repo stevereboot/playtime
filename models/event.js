@@ -7,8 +7,7 @@ var schema = new mongoose.Schema({
 	parent: String,
 	child: String,
 	change: Number,
-	message: String,
-	remaining: Number
+	message: String
 });
 
 // Define model

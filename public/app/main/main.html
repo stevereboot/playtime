@@ -42,18 +42,19 @@
                         </div>
 
                         <div class="input-group">
-                            <select class="form-control" style="width:35%" ng-model="main.timeform.delta.selected">
+                            <select class="form-control" style="width:35%" ng-model="main.timeform.delta.selected[i]">
                                 <option ng-repeat="option in main.timeform.delta.choices" value={{main.timeform.delta.data[$index]}}>{{option}}</option>
                             </select>
-                            <input type="text" class="form-control" aria-label="..." placeholder="Enter message" style="width:65%;" ng-model="main.timeform.message">
+                            <input type="text" class="form-control" aria-label="..." placeholder="Enter message" style="width:65%;" ng-model="main.timeform.message[i]">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" ng-click="main.timeform.update()">Go!</button>
+                                <button class="btn btn-default" type="button" ng-click="main.timeform.update(main.children[i].username, i)">Go!</button>
                             </span>
                         </div><!-- /input-group --> 
 
                         <div style="width: 100%; height: 10px; border-bottom: 1px solid #eee; text-align: center; margin: 20px 0;">
                             <span style="color: #777; background-color: #fff; padding: 0 10px;">History</span>
                         </div>
+                        <div style="height: 131px; overflow-y: auto; overflow-x: hidden;">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -68,10 +69,15 @@
                             </tr>
                             <tr>
                                 <td>Add 15</td>
-                                <td>Cleaned room</td>
+                                <td>Finished HW</td>
                             </tr>
+                            <tr>
+                            <td>Add 15</td>
+                                <td>Finished HW</td>
+                            </tr>                                            
                             </tbody>
                         </table>
+                        </div>
 
                     </div> <!-- /.panel-body -->
                 </div> <!-- /.panel -->
