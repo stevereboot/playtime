@@ -14,11 +14,20 @@ mainSvc.service('mainService', ['$http', '$q',
 
 		this.getChildren = function(input) {
 			return $q(function(resolve, reject) {
-	        	$http.get('/api/main/get' + '/' + input.parent).then(function(data) {
+				$http.get('/api/main/getchildren' + '/' + input.parent).then(function(data) {
 					resolve(data.data);
 				});
-	        });
+			});
 		}
 
+		this.getTimes = function(input) {
+			return $q(function(resolve, reject) {
+				$http.get('/api/main/gettimes' + '/' + input.child).then(function(data) {
+					resolve(data.data);
+				});
+			});
+		}
+
+		
 	}
 ]);

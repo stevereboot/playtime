@@ -8,7 +8,8 @@ var thirdPartyApps = [
 var sharedApps = [
     'dropzoneDirective',
     'toolsService',
-    'authService'
+    'authService',
+    'filters'
 ]
 
 var componentApps = [

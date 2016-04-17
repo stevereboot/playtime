@@ -13,7 +13,7 @@ tools.service('toolsService', [
 		}
 
 		// Get datetime from mongo _id
-		this.getDateTime = function(objectID, returnType) {
+		this.getMongoDateTime = function(objectID, returnType) {
 			if (!objectID) return null;
 			var returnType = typeof returnType !== 'undefined' ?  returnType : 'string';
 

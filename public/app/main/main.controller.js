@@ -16,6 +16,10 @@ main.controller('main',
     ) {
         $scope.main = {};
 
+        $scope.main.times = {};
+
+        var socket = null;
+
         // Check authentication
         authService.user(function(resp) {
             $scope.main.login = resp.username || false;
@@ -25,7 +29,12 @@ main.controller('main',
                 getChildren();
 
                 // Connect to socket if logged in
-                var socket = io();
+                socket = io();
+
+                // Refresh time on msg recieve
+                socket.on('timeUpdate', function(msg) {
+                    getTimes(msg.child);
+                });
 
             }
 
@@ -46,33 +55,53 @@ main.controller('main',
             mainService.getChildren({
                 parent: $scope.main.login
             }).then(function(resp) {
-                console.log(resp);
                 $scope.main.children = resp;
 
-                // Populate selected
                 for (i in resp) {
+                    // Populate selection controls
                     $scope.main.timeform.delta.selected.push('15');
                     $scope.main.timeform.message.push('');
-                }
 
+                    // Get latest time and history
+                    getTimes(resp[i]['username']);
+
+                }
             });
         }
 
+        // Get remaining time and change history
+        function getTimes(child) {
+            mainService.getTimes({
+                child: child
+            }).then(function(resp) {
+                // Add datetime
+                resp.events = resp.events.map(function(d) {
+                    d.datetime = toolsService.getMongoDateTime(d['_id']);
+                    return d;
+                });
+
+                $scope.main.times[child] = resp.events;
+                
+                var childIndex = toolsService.indexOfObject($scope.main.children, 'username', child)
+                $scope.main.children[childIndex]['time_rem'] = resp.remaining['time_rem'];
+
+            });
+        }
+   
+
         // Update time
         $scope.main.timeform.update = function(child, index) {
-            mainService.addEvent({
+            var event = {
                 parent: $scope.main.login,
                 child: child,
                 change: $scope.main.timeform.delta.selected[index],
                 message: $scope.main.timeform.message[index]
-            }).then(function(resp) {
-                console.log(resp);
-
-
+            }
+            mainService.addEvent(event).then(function(resp) {
+                // Broadcast message to refresh
+                socket.emit('timeUpdate', event);
             });
-        } 
-
-
+        }
 
     }
 ]);

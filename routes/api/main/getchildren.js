@@ -1,7 +1,6 @@
-// routes/api/main/get.js
+// routes/api/main/getchildren.js
 
 var Account = require('../../../models/account');
-var passport = require('passport');
 
 module.exports = function(req, res) {
 	Account.find({'parent': req.params.parent}, {

@@ -63,18 +63,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Add 15</td>
-                                <td>Finished HW</td>
+                            <tr ng-repeat="time in main.times[main.children[i].username] | orderBy: 'datetime' : true">
+                                <td>{{time.change > 0 ? "Add " : "Sub "}}{{time.change | absValue}}</td>
+                                <td>{{time.message}}</td>
                             </tr>
-                            <tr>
-                                <td>Add 15</td>
-                                <td>Finished HW</td>
-                            </tr>
-                            <tr>
-                            <td>Add 15</td>
-                                <td>Finished HW</td>
-                            </tr>                                            
+                                          
                             </tbody>
                         </table>
                         </div>

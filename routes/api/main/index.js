@@ -2,7 +2,8 @@
 
 var router = require('express').Router();
 
-router.get('/get/:parent', require('./get.js'));
+router.get('/getchildren/:parent', require('./getchildren.js'));
+router.get('/gettimes/:child', require('./gettimes.js'));
 router.post('/update', require('./update.js'));
 
 module.exports = router;
